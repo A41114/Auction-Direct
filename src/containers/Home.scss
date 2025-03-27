@@ -1,0 +1,146 @@
+.container{
+    // background: #f4f5f5;
+    height: 100vh;
+    .content{
+        .top-content{
+            display: flex;
+            justify-content: center;
+            // align-items: center;
+            .logo{
+                // border: 1px solid red;
+                background-color: white;
+                background-image: url('../assets/images/logo.png');
+                height: 200px;
+                width: 200px;
+                background-size: contain; 
+                background-position: center; 
+                background-repeat: no-repeat;
+                
+            }
+            .title{
+                // border: 1px solid blue;
+                background-color: white;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 60px;
+                color: #14a800;;
+                font-weight: 600;
+                width: 1200px;
+            }
+        }
+        .mid-content{
+            // border: 1px solid blue;
+            margin-left: 254px;
+            margin-top: 5px;
+            display: flex;
+            gap: 3px;
+            // justify-content: center;
+            width: 1403px;
+            .mid-content-item{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #14a800;
+                color: white;
+                font-weight: 600;
+                font-size: 20px;
+                height: 40px;
+                cursor: pointer;
+                &:hover{
+                    background-color: darkgreen;
+                }
+                
+            }
+            .homepage{
+                width: 120px;
+            }
+            .intro{
+                width: 120px;
+            }
+            .auction-annoucement{
+                width: 320px;
+            }
+            .choosing-annoucement{
+                width: 355px;
+            }
+            .database{
+                width: 150px;
+            }
+            .news{
+                width: 120px;
+            }
+            .blank{
+                width: 200px;
+            }
+        }
+        .bottom-content{
+            margin-left: 254px;
+            margin-top: 5px;
+            background-image: url(../assets/images/auctionHammer_edit2.jpg);
+            height: 370px;
+            width: 1403px;
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+        }
+        .auctionAnnoucement-html{
+            // border: 1px solid red;
+            height: fit-content;
+            width: fit-content;
+        }
+        .compare-top-content{
+            margin-top: 20px;
+            // border: 1px solid blue;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+            input{
+                width: 300px;
+            }
+        }
+        .file-content{
+            // border: 1px solid orange;
+            overflow: hidden; /* Ẩn văn bản thừa */
+            // background-color: #f4f5f5;
+        }
+        .compare-bottom-content{
+            // border: 1px solid green;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .handle-compare-btn{
+                margin-top: 20px;
+                width: 170px;
+                height: 40px;
+                background-color: #14a800;
+                color: white;
+                font-weight: 600;
+                cursor: pointer;
+                &:hover{
+                    background-color: darkgreen;
+                }
+            }
+        }
+        .compare-content{
+            // background-color: #f4f5f5;
+            .compare-item{
+                display: flex;
+                gap: 30px;
+                .compare-item-title{
+                    font-weight: 600;
+                    // border: 1px solid purple;
+                    width: 360px;
+                    color: red;
+                    &.correct{
+                        color: green;
+                    }
+                }
+            }
+            .web-content{
+                width: 400px;
+            }
+        }   
+    }
+}

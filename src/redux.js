@@ -1,5 +1,5 @@
 import { logger } from "redux-logger";
-import thunkMiddleware from "redux-thunk";
+
 import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
@@ -28,7 +28,7 @@ const reduxStateSyncConfig = {
 const rootReducer = createRootReducer(history);
 const middleware = [
     routerMiddleware(history),
-    thunkMiddleware,
+ 
     createStateSyncMiddleware(reduxStateSyncConfig),
 ]
 if (isDevelopment) middleware.push(logger);
