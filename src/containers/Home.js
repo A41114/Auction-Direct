@@ -113,11 +113,13 @@ class Home extends Component {
                 url:this.state.url,
                 formData:formData
             })
-            let [deposit_Start_Date, deposit_Start_Time] = auctionAnnoucement.res.register_Deposit_Start.split(" ");
-            let [deposit_End_Date, deposit_End_Time] = auctionAnnoucement.res.register_Deposit_End.split(" ");
+            console.log('res:',auctionAnnoucement.res)
             
-            let [bidding_Start_Date, bidding_Start_Time] = auctionAnnoucement.res.start_bidding.split(" ");
-            let [bidding_End_Date, bidding_End_Time] = auctionAnnoucement.res.end_bidding.split(" ");
+            let [deposit_Start_Date, deposit_Start_Time] = await auctionAnnoucement.res.register_Deposit_Start.split(" ");
+            let [deposit_End_Date, deposit_End_Time] = await auctionAnnoucement.res.register_Deposit_End.split(" ");
+            
+            let [bidding_Start_Date, bidding_Start_Time] = await auctionAnnoucement.res.start_bidding.split(" ");
+            let [bidding_End_Date, bidding_End_Time] = await auctionAnnoucement.res.end_bidding.split(" ");
             // console.log('date: ',deposit_Start_Date)
             // console.log('time: ',this.formatTime(deposit_Start_Time))
             this.setState({
@@ -141,8 +143,8 @@ class Home extends Component {
     }
      
     
-    handleCompare=()=>{
-        this.getData()
+    handleCompare=async()=>{
+        await this.getData()
 
     }
     // componentDidUpdate(prevProps, prevState) {
