@@ -1,0 +1,91 @@
+.tippy-box[data-theme~='custom'] {
+    background-color: white; /* màu cam */
+    color: black;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+border-top-color: #ffa726;
+}
+.fc-event.ED_bg {
+    background: linear-gradient(90.67deg, #df710b 0.13%, #df3e0b 95.62%);
+    border: none;
+    color: white; // hoặc màu chữ bạn muốn
+}
+.fc-event.BSD_bg {
+    background: linear-gradient(90.67deg, #01ab6f 0.13%, #00b49e 95.62%);
+    // background: #FF9500;
+    // background: #f16514;
+    ;
+    border: none;
+    color: white; // hoặc màu chữ bạn muốn
+}
+
+//lịch
+// Nền toàn bộ lịch
+.fc {
+    font-family: 'Inter', sans-serif;
+    // background-color: #f8f9fa;
+    background-color: #0b1627;
+    color: white;
+    border: none;
+  }
+  
+  // Màu nền ngày hiện tại
+  .fc-day-today {
+    // background-color: #ffe0b2 !important;
+    background-color: #0b1627 !important;
+    
+  }
+  
+  // Màu sự kiện mặc định
+  .fc-event {
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 2px 4px;
+    &:hover{
+        
+    }
+  }
+  
+  // Header
+  .fc-toolbar-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th,
+.fc .fc-col-header-cell,
+.fc .fc-daygrid-day {
+//   border: none !important;
+}
+.fc {
+    border: 1px solid rgba(255, 255, 255, 0.15)!important;;
+    border-radius: 6px !important;
+  }
+.fc-timegrid-slot {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1)!important;; // hoặc #ccc tùy theme
+}
+.fc-timegrid-col {
+    border-right: 1px solid rgba(255, 255, 255, 0.1)!important;;
+}
+.fc-col-header-cell {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2)!important;;
+}
+
+/* Đánh dấu ngày hôm nay bằng màu nền */
+.fc-day-today {
+    color: orange;                /* Màu chữ tối */
+  }
+/* Thêm viền và màu sắc riêng biệt cho ngày hôm nay */
+.fc-day-today {
+    // border: 2px solid #ff9800 !important;  /* Viền cam xung quanh ngày hôm nay */
+}
+

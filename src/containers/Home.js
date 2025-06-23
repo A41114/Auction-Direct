@@ -15,6 +15,12 @@ class Home extends Component {
         super(props);
         
         this.state={
+            compare:true,
+            dgtsTool:false,
+            partnerVnaTool:false,
+
+
+
             fileContent: '',
             auctionAnnoucement:'',
             url:'',
@@ -61,7 +67,9 @@ class Home extends Component {
     }
     
     componentDidMount() {
-
+        if(this.props){
+            
+        }
     }
     //Format Time
     formatTime=(timeString)=>{
@@ -111,7 +119,8 @@ class Home extends Component {
            
             let auctionAnnoucement = await getAuctionAnnouncement({
                 url:this.state.url,
-                formData:formData
+                formData:formData,
+                type:'compare'
             })
             console.log('res:',auctionAnnoucement.res)
             
@@ -157,25 +166,16 @@ class Home extends Component {
     
     render() {
         
-        console.log('states: ',this.state)
+        // console.log('states: ',this.state)
+        
         
         return (
+            
             <div className='container'>
                 <div className='content'>
-                    <div className='top-content'>
-                        <div className='logo'></div>
-                        <div className='title'>Công ty Đấu giá hợp danh VNA</div>
-                    </div>
-                    <div className='mid-content'>
-                        <div className='mid-content-item homepage'>Trang chủ</div>
-                        <div className='mid-content-item intro'>Giới thiệu</div>
-                        <div className='mid-content-item auction-annoucement'>Thông báo công khai việc đấu giá</div>
-                        <div className='mid-content-item choosing-annoucement'>Thông báo lựa chọn tổ chức đấu giá</div>
-                        <div className='mid-content-item database'>Cơ sở dữ liệu</div>
-                        <div className='mid-content-item news'>Tin tức</div>
-                        <div className='mid-content-item blank'></div>
-                    </div>
-                    <div className='bottom-content'></div>
+                    
+                    
+                    
                     <div className='compare-top-content'>
                         <div>
                         <label>Link tài sản: </label>
@@ -183,6 +183,7 @@ class Home extends Component {
                         </div>
 
                         <div>
+                            <label>Kế hoạch đấu giá: </label>
                             <input type="file"onChange={this.handleFileChange} />
                         </div>
                     </div>
@@ -195,7 +196,6 @@ class Home extends Component {
                         }
                         
                     </div>
-                    
                         
                         <div className='compare-content'>
                             {this.state.register_Start_End&&
@@ -280,6 +280,7 @@ class Home extends Component {
                     }
                 </div>
             </div>
+            
         )
     }
 

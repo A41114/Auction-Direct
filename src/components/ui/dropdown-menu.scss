@@ -1,0 +1,83 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-button {
+    background-color: transparent;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 180px;
+    height: 48px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-family:sans-serif;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.2s ease;
+    display: flex;
+    gap: 10px;
+    font-weight: 600;
+    color:#637d92;
+    &:hover{
+      color: #109922;
+      transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
+    }
+    .dropdown-compare-icon{
+      margin-top: 3px;
+    }
+    .dropdown-dgtsTool-icon{
+      margin-top: 3px;
+    }
+    .dropdown-vna-partner-icon{
+      margin-top: 3px;
+    }
+    .dropdown-schedule-icon{
+      margin-top: 2px;
+    }
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+    // background: #fff;
+    border-radius: 6px;
+    
+    transition: all .6s ease;
+   
+    width: 190px;
+
+  }
+  
+  .dropdown:hover .dropdown-button {
+    // background-color: #0a0a0b52;
+    color: #25b137;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
+  }
+  

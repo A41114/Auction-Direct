@@ -1,0 +1,233 @@
+.signup-container{
+    .signup-content{
+        display: flex;
+        height: 100vh;
+        .signup-left-content{
+            // border: 1px solid red;
+            width: 50%;
+            height: 100%;
+            
+            .title-container{
+                // border: 1px solid blue;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 60px;
+                .Vna-logo{
+                    // border: 1px solid orange;
+                    background-image: url('../assets/images/logo_bgRemove.png');
+                    height: 90px;
+                    width: 190px;
+                    background-size: contain; 
+                    background-position: center; 
+                    background-repeat: no-repeat;
+                    
+                }
+                .Vna-title{
+                    // text-transform: uppercase;
+                    color: darkgreen;
+                    font-weight: 600;
+                    font-weight: 600;
+                    font-size: 24px;
+                }
+                .Vna-sub-title{
+                    margin-top: 5px;
+                }
+            }
+            .sign-up-img-container{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                .sign-up-img{
+                    // border: 1px solid orange;
+                    background-image: url('../assets/images/signup-img.png');
+                    height: 540px;
+                    width: 540px;
+                    background-size: contain; 
+                    background-position: center; 
+                    background-repeat: no-repeat;
+                    margin-top: 45px;
+                }
+            }
+        }
+        .signup-right-content{
+            // border: 1px solid blue;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            
+            .signup-input-container{
+                // border: 1px solid green;
+                width: 80%;
+                // height: 95%;
+                box-shadow: 0 2px 24px #0f3cc91f;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                border-radius: 24px;
+                .signup-input-content{
+                    // border: 1px solid blue;
+                    width: 80%;
+                    padding-top: 20px;
+                    .signup-title{
+                        font-weight: 600;
+                        font-size: 24px;
+                    }
+                    .account-type{
+                        display: flex;
+                        // gap: 20px;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: #e7ebef;
+                        height: 48px;
+                        border-radius: 24px;
+                        margin-top: 15px;
+                        .personal{
+                            cursor: pointer;
+                            display: flex;
+                            gap: 10px;
+                            justify-content: center;
+                            align-items: center;
+                            // border: 1px solid red;
+                            height: 37px;
+                            border-radius: 24px;
+                            width: 49%;
+                            &.active{
+                                background-color: white;
+                            }
+                        }
+                        .company{
+                            cursor: pointer;
+                            display: flex;
+                            gap: 10px;
+                            justify-content: center;
+                            align-items: center;
+                            // border: 1px solid blue;
+                            height: 37px;
+                            border-radius: 24px;
+                            width: 49%;
+                            &.active{
+                                background-color: white;
+                            }
+                        }
+                    }
+                    .signup-input-text{
+                        margin-top: 20px;
+                        .signup-text{
+                            padding-left: 15px;
+                        }
+                        .signup-input{
+                            border-radius: 100px;
+                            height: 48px;
+                            // width: 700px;
+                            width: 100%;
+                            border: 1px solid #ced4da;
+                            padding-left: 20px;
+                            outline: none;
+                        }
+                    }
+                    .signup-select{
+                        display: flex;
+                        width: 104%;
+                        gap: 20px;
+                        margin-top: 20px;
+                        .gender-container{
+                            width: 50%;
+                            .signup-text{
+                                padding-left: 15px;
+                            }
+                            select{
+                                display: flex;
+                                justify-content: center;
+                                border-radius: 100px;
+                                height: 48px;
+                                // width: 700px;
+                                // width: 100%;
+                                border: 1px solid #ced4da;
+                                outline: none;
+                                width: 100%;
+                                padding-left: 20px;
+                            }
+                        }
+                        .role-container{
+                            width: 50%;
+                            .signup-text{
+                                padding-left: 15px;
+                            }
+                            select{
+                                display: flex;
+                                justify-content: center;
+                                border-radius: 100px;
+                                height: 48px;
+                                // width: 700px;
+                                // width: 100%;
+                                border: 1px solid #ced4da;
+                                outline: none;
+                                width: 100%;
+                                padding-left: 20px;
+                            }
+                        }
+                    }
+                    .password-not-match{
+                        color: red;
+                        margin-left: 15px;
+                        margin-top: 3px;
+                    }
+                    .term-and-policy{
+                        display: flex;
+                        gap: 10px;
+                        padding-top: 15px;
+                        .term-and-policy-checkbox{
+                            margin-left: 15px;
+                            cursor: pointer;
+                            height: 20px;
+                            width: 20px;
+                        }
+                        .term-and-policy-text{
+                            // padding-top: 40px;
+                            span{
+                                color: #14a800;
+                                cursor: pointer;
+                                font-weight: 600;
+                                &:hover{
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                        
+                    }
+                    .sigup-btn{
+                        background-color: #78c90f;
+                        font-size: 16px;
+                        height: 48px;
+                        width: 100%;
+                        border-radius: 24px;
+                        border: none;
+                        cursor: pointer;
+                        color: white;
+                        margin-top: 20px;
+                        width: 104%;
+                    }
+                    .already-have-account{
+                        display: flex;
+                        justify-content: center;
+                        margin-top: 20px;
+                        font-size: 14px;
+                        gap: 5px;
+                        span{
+                            color: #14a800;
+                            cursor: pointer;
+                            font-weight: 600;
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

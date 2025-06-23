@@ -8,6 +8,10 @@ import {history} from './redux'
 import { connect } from 'react-redux';
 import WordToImg from './WordToImg';
 import Home from './containers/Home'
+import HomePage from './containers/HomePage';
+import Signup from './containers/Signup';
+import Login from './containers/Login';
+import UserDetails from './containers/UserDetails';
 class App extends Component {
 
   handlePersistorState = () => {
@@ -38,7 +42,10 @@ class App extends Component {
                   <div className="main-container">
                       <span className="content-container">
                           <Switch>
-                              <Route path={'/'} exact component={Home} />                          
+                              <Route path={'/'} exact component={HomePage} /> 
+                              <Route path={'/signup'} exact component={Signup} />  
+                              <Route path={'/Login'} exact component={Login} />  
+                              <Route path={'/UserDetails'} exact component={UserDetails} />                          
                           </Switch>
                       </span>
 
