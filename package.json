@@ -22,7 +22,6 @@
         "axios": "^1.8.3",
         "class-variance-authority": "^0.7.1",
         "compare-frontend": "file:",
-        "connected-react-router": "^6.9.3",
         "dom-to-image": "^2.6.0",
         "history": "^4.10.1",
         "jsonwebtoken": "^9.0.2",
