@@ -5,7 +5,7 @@ const initialState = {
     adminInfo: null
 }
 
-const appReducer = (state = initialState, action) => {
+const adminReducer  = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.ADMIN_LOGIN_SUCCESS:
             return {
@@ -30,4 +30,4 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export default appReducer;
+export default adminReducer ;

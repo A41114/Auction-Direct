@@ -14,13 +14,16 @@ import Schedule from './Schedule';
 import GoogleLogin from '../GoogleLogin';
 // import  MyDropdown from "../components/MyDropdown";
 import Dropdownmenu from '../components/ui/dropdown-menu'
-import { useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLessThanEqual,faGavel,faHandshake, faCalendarDays, faMagnifyingGlass,faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import {logout} from'../authSlice.js'
 import UserNameDropdown from '../components/ui/user-name-dropdown.jsx'
 import ChatBox from '../chatbox.js';
+import { useNavigate } from 'react-router-dom';
+import { withRouter } from '../withRouter'
 class HomePage extends Component {
+    
     constructor(props) {
         super(props);
         //khai báo biến local storage
@@ -31,7 +34,7 @@ class HomePage extends Component {
 
         const savedIsLogin = JSON.parse(localStorage.getItem('isLogin'));
         
-
+        
         // console.log('savedCompare',savedCompare)
         this.state={
             compare:savedCompare,
@@ -138,13 +141,15 @@ class HomePage extends Component {
     }
     
     ToSignup=()=>{
-        this.props.history.push("/signup");
+        // this.props.history.push("/signup");
+        // this.props.navigate('/signup')
+        this.props.router.navigate('/signup')
     }
     ToLogin=()=>{
-        this.props.history.push("/login");
+        // this.props.history.push("/login");
     }
     ToUserDetails=()=>{
-        this.props.history.push("/UserDetails");
+        // this.props.history.push("/UserDetails");
     }
     // componentDidUpdate(prevProps) {
     //     if (prevProps.isLogin !== this.props.isLogin) {
@@ -251,4 +256,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePage));
