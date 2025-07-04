@@ -119,6 +119,7 @@ Trân trọng!
             },this.props.token)
             // console.log(this.changeDateFormatToCalendar(auctionAnnoucement.SD_Matrix))
 
+            console.log(this.changeDateFormatToCalendar('auctionAnnoucement res: ',auctionAnnoucement.SD_Matrix))
             let SD_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.SD_Matrix)
             let ED_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.ED_Matrix)
             let BSD_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.BSD_Matrix)
@@ -178,6 +179,10 @@ Trân trọng!
     };
     //Sắp sếp theo ngày tăng dần
     sortArrbyDate=(arr)=>{
+        if (!Array.isArray(arr)) {
+            console.warn("sortArrbyDate: arr is not an array", arr);
+            return []; // trả mảng rỗng để không gây crash
+        }
         arr.sort((a, b)=>this.parseDateVN(a[0]) - this.parseDateVN(b[0]))
         return arr
     }
