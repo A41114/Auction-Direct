@@ -119,7 +119,7 @@ Trân trọng!
             },this.props.token)
             // console.log(this.changeDateFormatToCalendar(auctionAnnoucement.SD_Matrix))
 
-            console.log(this.changeDateFormatToCalendar('auctionAnnoucement res: ',auctionAnnoucement.SD_Matrix))
+            console.log(this.changeDateFormatToCalendar('auctionAnnoucement res: ',auctionAnnoucement))
             let SD_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.SD_Matrix)
             let ED_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.ED_Matrix)
             let BSD_Matrix_Calendar=await this.sortArrbyDate(auctionAnnoucement.BSD_Matrix)
