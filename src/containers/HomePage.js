@@ -226,7 +226,9 @@ class HomePage extends Component {
                 <div className='content'>
                     <ToastContainer />
                     <div className='auction-direct'>
-                        <div className='company-title'>Công ty đấu giá hợp danh Vna</div>
+                        <div className='company-title-container'>
+                            <div className='company-title'>Công ty đấu giá hợp danh Vna</div>
+                        </div>
                         <div className='auction-direct-top'>
                             <div className='property-name-container'>
                                 <div className='property-name'>Tên tài sản:</div>
@@ -236,15 +238,15 @@ class HomePage extends Component {
                             </div>
                             <div className='property-name-info-container'>
                                 <div className='starting-price-container'>
-                                    <div className='sub-property-title'>Đơn giá khởi điểm (đồng/m2):</div>
+                                    <div className='sub-property-title'>Đơn giá khởi điểm (đồng/m²):</div>
                                     <input className='sub-property-info-input' value={this.formatNumber(this.state.startingPrice)} placeholder='Nhập giá khởi điểm' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'startingPrice')}></input>
                                 </div>
                                 <div className='step-container'>
-                                    <div className='sub-property-title'>Bước giá (đồng/m2):</div>
+                                    <div className='sub-property-title'>Bước giá (đồng/m²):</div>
                                     <input className='sub-property-info-input' value={this.formatNumber(this.state.step)} placeholder='Nhập bước giá' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'step')}></input>
                                 </div>
                                 <div className='area-container'>
-                                    <div className='sub-property-title'>Diện tích (m2):</div>
+                                    <div className='sub-property-title'>Diện tích (m²):</div>
                                     <input className='sub-property-info-input' value={this.formatNumber(this.state.area)} placeholder='Nhập diện tích' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'area')}></input>
                                 </div>
                             </div>
@@ -261,11 +263,11 @@ class HomePage extends Component {
                                 <input className='number-of-step' placeholder='Nhập số bước giá'onChange={(event)=>this.handleOnChangeInput(event, 'numberOfStep')}></input>
                             </div>
                             <div className='number-of-step-container'>
-                                <button className='number-of-step-input' onClick={()=>this.handleOnClickPay()}>Trả giá</button>
+                                
                             </div>
                         </div>
                         <div className='auction-direct-bottom'disabled='true'>
-                            <div className='sub-property-title'>Tổng giá trả hiện tại:</div>
+                            <div className='sub-property-title'>Tổng giá trả hiện tại (vnđ):</div>
                             <div className='current-highest-price'>{this.formatNumber(this.state.currentHighestPrice)}</div>
                         </div>
 

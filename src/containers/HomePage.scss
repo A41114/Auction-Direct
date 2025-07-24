@@ -17,11 +17,15 @@
             // background-size: cover; 
             // background-position: center; 
             // background-repeat: no-repeat;
-            .company-title{
-                font-weight: 600;
-                font-size: 70px;
-                // margin-top: 20px;
-                margin-bottom: 60px;
+            .company-title-container{
+                display: flex;
+                justify-content: center;
+                .company-title{
+                    font-weight: 600;
+                    font-size: 70px;
+                    // margin-top: 20px;
+                    margin-bottom: 60px;
+                }
             }
             .auction-direct-top{
                 // border: 1px solid blue;
