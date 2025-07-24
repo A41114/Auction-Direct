@@ -56,7 +56,8 @@ class HomePage extends Component {
             participant:'',
             area:'',
             history:[],
-            isDisable:false
+            isDisable:false,
+            property:'Tên tài sản: '
         }
     }
     
@@ -231,9 +232,15 @@ class HomePage extends Component {
                         </div>
                         <div className='auction-direct-top'>
                             <div className='property-name-container'>
-                                <div className='property-name'>Tên tài sản:</div>
+                                
                                 <div className='property-name-input-container'>
-                                    <textarea className='property-name-input' placeholder='Nhập tên tài sản' disabled={this.state.isDisable}></textarea>
+                                    <div className='property-name-input' contentEditable={!this.state.isDisable} placeholder='Nhập tên tài sản' disabled={this.state.isDisable}
+                                    onPaste={(e) => {
+                                        e.preventDefault();
+                                        const text = e.clipboardData.getData('text/plain');
+                                        document.execCommand('insertText', false, text);
+                                      }}
+                                    > <strong>Tên tài sản:</strong>&nbsp;</div>
                                 </div>
                             </div>
                             <div className='property-name-info-container'>
@@ -267,7 +274,7 @@ class HomePage extends Component {
                             </div>
                         </div>
                         <div className='auction-direct-bottom'disabled='true'>
-                            <div className='sub-property-title'>Tổng giá trả hiện tại (vnđ):</div>
+                            <div className='sub-property-title'>Tổng giá trả hiện tại (đồng):</div>
                             <div className='current-highest-price'>{this.formatNumber(this.state.currentHighestPrice)}</div>
                         </div>
 
