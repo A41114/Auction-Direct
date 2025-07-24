@@ -57,7 +57,9 @@ class HomePage extends Component {
             area:'',
             history:[],
             isDisable:false,
-            property:'Tên tài sản: '
+            property:'Tên tài sản: ',
+            shortName:'',
+            currentPrice:''
         }
     }
     
@@ -197,15 +199,19 @@ class HomePage extends Component {
         }else if(this.state.isDisable===false){
             toast.error('Chưa khóa thông tin')
         }else{
-            let currentHighestPrice = (parseFloat(this.state.currentHighestPrice) + parseFloat(this.state.step)*parseFloat(this.state.numberOfStep))*parseFloat(this.state.area)
+            // let currentHighestPrice = (parseFloat(this.state.currentHighestPrice) + parseFloat(this.state.step)*parseFloat(this.state.numberOfStep))
             // let currentHighestPrice =  parseFloat(this.state.step)*parseFloat(this.state.numberOfStep)
-            let {participant,history}=this.state
-            // let newHistory = {participant,currentHighestPrice}
-            // history.push(newHistory)
+            let {participant,history,currentPrice}=this.state
+            
+            currentPrice = (parseFloat(this.state.currentPrice) + parseFloat(this.state.step)*parseFloat(this.state.numberOfStep))
+            let newHistory = currentPrice
+            history.push(newHistory)
+            
 
             this.setState({
-                currentHighestPrice:currentHighestPrice,
-                history:history
+                // currentHighestPrice:currentHighestPrice,
+                history:history,
+                currentPrice:currentPrice
             })
         }
     }
@@ -213,9 +219,30 @@ class HomePage extends Component {
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
     handleLockInfo=()=>{
+        let {history}=this.state
+        let newHistory = this.state.startingPrice
+        history.push(newHistory)
         this.setState({
-            isDisable:!this.state.isDisable
+            isDisable:!this.state.isDisable,
+            history:history,
+            currentPrice:newHistory
         })
+    }
+    handleGoBack=()=>{
+        if(this.state.history.length<1){
+            toast.error('Đang giá khởi điểm')
+
+        }else{
+            let {history}=this.state
+            if(this.state.history.length>1){
+                history.pop()
+            }
+            // console.log('history.pop()',history[history.length-1])
+            this.setState({
+                history:history,
+                currentPrice:history[history.length-1]
+            })
+        }
     }
     
     render() {
@@ -232,7 +259,6 @@ class HomePage extends Component {
                         </div>
                         <div className='auction-direct-top'>
                             <div className='property-name-container'>
-                                
                                 <div className='property-name-input-container'>
                                     <div className='property-name-input' contentEditable={!this.state.isDisable} placeholder='Nhập tên tài sản' disabled={this.state.isDisable}
                                     onPaste={(e) => {
@@ -240,8 +266,10 @@ class HomePage extends Component {
                                         const text = e.clipboardData.getData('text/plain');
                                         document.execCommand('insertText', false, text);
                                       }}
-                                    > <strong>Tên tài sản:</strong>&nbsp;</div>
+                                    > <strong>Tên tài sản:</strong>Quyền sử dụng đất thuộc thửa đất số 103, tờ bản đồ số 01, Lô DC.A09 thuộc Dự án Trung tâm văn hoá, thể thao, thương mại và đô thị Chí Linh đã được tách thành các ô đất theo quy hoạch chi tiết tỷ lệ 1/2000 đã được UBND tỉnh Hải Dương phê duyệt theo Quyết định số 2135/QĐ-UBND ngày 25/6/2019 gồm 13 ô đất</div>
+                                    <input className='short-name'disabled={this.state.isDisable}onChange={(event)=>this.handleOnChangeInput(event, 'shortName') }></input>
                                 </div>
+                                
                             </div>
                             <div className='property-name-info-container'>
                                 <div className='starting-price-container'>
@@ -256,6 +284,10 @@ class HomePage extends Component {
                                     <div className='sub-property-title'>Diện tích (m²):</div>
                                     <input className='sub-property-info-input' value={this.formatNumber(this.state.area)} placeholder='Nhập diện tích' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'area')}></input>
                                 </div>
+                                <div className='area-container'>
+                                    <div className='sub-property-title'>Giá cao nhất hiện tại (đồng/m²):</div>
+                                    <input className='sub-property-info-input' value={this.formatNumber(this.state.currentPrice)} disabled='true' onChange={(event)=>this.handleOnChangeInput(event, 'area')}></input>
+                                </div>
                             </div>
                         </div>
                         <div className='Lock-info-container'>
@@ -269,13 +301,13 @@ class HomePage extends Component {
                                 <div className='sub-property-title'>Số bước giá khách hàng trả:</div>
                                 <input className='number-of-step' placeholder='Nhập số bước giá'onChange={(event)=>this.handleOnChangeInput(event, 'numberOfStep')}></input>
                             </div>
-                            <div className='number-of-step-container'>
-                                
+                            <div className='auction-go-back'>
+                                <button className='auction-go-back-btn' onClick={()=>this.handleGoBack()}>Quay lại</button>
                             </div>
                         </div>
                         <div className='auction-direct-bottom'disabled='true'>
                             <div className='sub-property-title'>Tổng giá trả hiện tại (đồng):</div>
-                            <div className='current-highest-price'>{this.formatNumber(this.state.currentHighestPrice)}</div>
+                            <div className='current-highest-price'>{this.formatNumber(this.state.currentPrice*parseFloat(this.state.area))}</div>
                         </div>
 
 
