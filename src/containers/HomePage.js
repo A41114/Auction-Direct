@@ -22,6 +22,9 @@ import UserNameDropdown from '../components/ui/user-name-dropdown.jsx'
 import ChatBox from '../chatbox.js';
 import { useNavigate } from 'react-router-dom';
 import { withRouter } from '../withRouter'
+import { current } from '@reduxjs/toolkit';
+
+import { toast,ToastContainer } from 'react-toastify';
 class HomePage extends Component {
     
     constructor(props) {
@@ -44,23 +47,32 @@ class HomePage extends Component {
             isLogin:savedIsLogin,
             homepageMenu:'homepage',
             totalChatbox:[],
+
+
+            startingPrice:'',
+            currentHighestPrice:'',
+            step:'',
+            numberOfStep:'',
+            participant:'',
+            area:'',
+            history:[],
+            isDisable:false
         }
     }
     
     
-    async componentDidMount () {
-        if(this.props.userInfo){
-            
-            if(this.props.userInfo.roleId==='Admin'){
-                // console.log(this.props.userInfo)
-                let resChatbox = await getAllAdminChatboxByAdminId(this.props.userInfo.id)
-                // console.log('resChatbox: ',resChatbox.chat)
-                this.setState({
-                    totalChatbox : resChatbox.chat
-                })
-            }
-        }
+    componentDidMount() {
+        document.addEventListener('keydown', this.handleKeyDown);
+      }
+      
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.handleKeyDown);
     }
+    handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          this.handleOnClickPay();
+        }
+    };
         
     handleLogin=()=>{
         //lấy user data
@@ -160,77 +172,108 @@ class HomePage extends Component {
     handleLogout=()=>{
         this.props.logout(); 
     }
+    handleOnChangeInput = (event,inputId)=>{
+        const rawValue = event.target.value.replace(/,/g, "").replace(/\D/g, ""); // chỉ giữ số
+        let copyState = this.state;
+
+        if(inputId==='startingPrice'){
+            copyState['currentHighestPrice']=rawValue;
+        }
+        copyState[inputId]=rawValue;
+        this.setState({
+            ...copyState,
+        })
+    }
+    handleOnClickPay = ()=>{
+        if(!this.state.startingPrice){
+            toast.error('Nhập thiếu giá khởi điểm')
+        }else if(!this.state.step){
+            toast.error('Nhập thiếu bước giá')
+        }else if(!this.state.area){
+            toast.error('Nhập thiếu diện tích')
+        }else if(!this.state.numberOfStep){
+            toast.error('Nhập thiếu số bước giá')
+        }else if(this.state.isDisable===false){
+            toast.error('Chưa khóa thông tin')
+        }else{
+            let currentHighestPrice = (parseFloat(this.state.currentHighestPrice) + parseFloat(this.state.step)*parseFloat(this.state.numberOfStep))*parseFloat(this.state.area)
+            // let currentHighestPrice =  parseFloat(this.state.step)*parseFloat(this.state.numberOfStep)
+            let {participant,history}=this.state
+            // let newHistory = {participant,currentHighestPrice}
+            // history.push(newHistory)
+
+            this.setState({
+                currentHighestPrice:currentHighestPrice,
+                history:history
+            })
+        }
+    }
+    formatNumber = (num)=>{
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    handleLockInfo=()=>{
+        this.setState({
+            isDisable:!this.state.isDisable
+        })
+    }
     
     render() {
         // console.log('HOMEPAGE')
-        // console.log('HOMEPAGE states: ',this.state.totalChatbox.length)
+        console.log('HOMEPAGE states: ',this.state)
         
         return (
             <div className='container'>
                 <div className='content'>
-                    <div className='bottom-content-homepage'>
-                        <div className='vna-top-content'>
-                            <div className='vna-blank-top'></div>
-                            <div className='nav-bar'>
-                                <div className='vna-logo'></div>
-                                <div className='vna-menu'>
-                                    
-                                    <div className={this.state.homepageMenu==='homepage'?'menu-item-homepage active':'menu-item-homepage'}>Trang chủ</div>
-                                    
-                                    <Dropdownmenu
-                                        handleOnChangeHomepageMenu={this.handleOnChangeHomepageMenu}
-                                    />
-                                    <div className='menu-item-news' onClick={()=>this.handleToNews()}>Thông báo và tin tức</div>
-                                    <div className='menu-item-about-us' onClick={()=>this.handleToAboutUs()}>Về chúng tôi</div>
+                    <ToastContainer />
+                    <div className='auction-direct'>
+                        <div className='company-title'>Công ty đấu giá hợp danh Vna</div>
+                        <div className='auction-direct-top'>
+                            <div className='property-name-container'>
+                                <div className='property-name'>Tên tài sản:</div>
+                                <div className='property-name-input-container'>
+                                    <textarea className='property-name-input' placeholder='Nhập tên tài sản' disabled={this.state.isDisable}></textarea>
                                 </div>
-                                {!this.props.userInfo?
-                                <div className='vna-btn'>
-                                    <button className='signup-btn'onClick={()=>this.ToSignup()}>Đăng ký</button>
-                                    <button className='login-btn'onClick={()=>this.ToLogin()}>Đăng nhập</button>
+                            </div>
+                            <div className='property-name-info-container'>
+                                <div className='starting-price-container'>
+                                    <div className='sub-property-title'>Đơn giá khởi điểm (đồng/m2):</div>
+                                    <input className='sub-property-info-input' value={this.formatNumber(this.state.startingPrice)} placeholder='Nhập giá khởi điểm' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'startingPrice')}></input>
                                 </div>
-                                :
-                                <div className='signed-in'>
-                                    <div className='user-name'><UserNameDropdown userName={this.props.userInfo.fullName} handleLogout={this.handleLogout} ToUserDetails={this.ToUserDetails}/></div>
+                                <div className='step-container'>
+                                    <div className='sub-property-title'>Bước giá (đồng/m2):</div>
+                                    <input className='sub-property-info-input' value={this.formatNumber(this.state.step)} placeholder='Nhập bước giá' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'step')}></input>
                                 </div>
-                                }
-                                
-                            </div>
-                            <div className='vna-find-property-title'>
-                                Tìm kiếm tài sản đấu giá
-                            </div>
-                            <div className='vna-find-property-sub-title'>
-                                Chọn tài sản đấu giá và bắt đầu tìm kiếm
-                            </div>
-                            <div className='vna-homepage-search-container'>
-                                <div className='vna-homepage-search-content'>
-                                    <div className='vna-property-type'>
-                                        
-                                        <div className={this.state.compare?'type-item active':'type-item'} onClick={()=>this.handleOnChangeHomepageMenu('compare')}><FontAwesomeIcon className='compare-icon' icon={faLessThanEqual}/>So sánh</div>
-                                        <div className={this.state.dgtsTool?'type-item active':'type-item'} onClick={()=>this.handleOnChangeHomepageMenu('dgtsTool')}><FontAwesomeIcon className='compare-icon' icon={faGavel}/>ĐGTS</div>
-                                        <div className={this.state.partnerVnaTool?'type-item active':'type-item'} onClick={()=>this.handleOnChangeHomepageMenu('partnerVnaTool')}><FontAwesomeIcon className='compare-icon' icon={faHandshake}/>Partner</div>
-                                        <div className={this.state.schedule?'type-item active':'type-item'} onClick={()=>this.handleOnChangeHomepageMenu('schedule')}><FontAwesomeIcon className='compare-icon' icon={faCalendarDays}/>Schedule</div>
-                                    </div>
-                                    <div className='vna-search-input-container'>
-                                        <input className='vna-search-input' placeholder='Tìm kiếm'></input><span className='search-icon-container'><FontAwesomeIcon className='search-icon' icon={faMagnifyingGlass}/></span>
-                                    </div>
+                                <div className='area-container'>
+                                    <div className='sub-property-title'>Diện tích (m2):</div>
+                                    <input className='sub-property-info-input' value={this.formatNumber(this.state.area)} placeholder='Nhập diện tích' disabled={this.state.isDisable} onChange={(event)=>this.handleOnChangeInput(event, 'area')}></input>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {this.state.compare&&
-                        <Home/>
-                    }
-                    {this.state.dgtsTool&&
-                        <DgtsTool/>
-                    }
-                    {this.state.partnerVnaTool&&
-                        <VnaPartnerTool/>
-                    }
-                    {this.state.schedule&&
-                        <Schedule/>
-                        
-                    }
+                        <div className='Lock-info-container'>
+                            {this.state.isDisable?
+                            <button className='Lock-info' onClick={()=>this.handleLockInfo()}>Mở khóa thông tin</button>:
+                            <button className='Lock-info' onClick={()=>this.handleLockInfo()}>Khóa thông tin</button>
+                            }
+                        </div>
+                        <div className='auction-direct-mid'>
+                            <div>
+                                <div className='sub-property-title'>Số bước giá khách hàng trả:</div>
+                                <input className='number-of-step' placeholder='Nhập số bước giá'onChange={(event)=>this.handleOnChangeInput(event, 'numberOfStep')}></input>
+                            </div>
+                            <div className='number-of-step-container'>
+                                <button className='number-of-step-input' onClick={()=>this.handleOnClickPay()}>Trả giá</button>
+                            </div>
+                        </div>
+                        <div className='auction-direct-bottom'disabled='true'>
+                            <div className='sub-property-title'>Tổng giá trả hiện tại:</div>
+                            <div className='current-highest-price'>{this.formatNumber(this.state.currentHighestPrice)}</div>
+                        </div>
 
+
+
+                        
+                        
+                    </div>
                     
                 </div>
                 

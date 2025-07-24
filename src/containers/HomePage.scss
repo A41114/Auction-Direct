@@ -1,436 +1,143 @@
 .container{
-    background: #f4f5f5;
-    height: 100vh;
+    // background: #f4f5f5;
+    // height: 100vh;
     // background-color: #adb5bd93;
+    // color: linear-gradient(270deg,#25b137,#0c6846 96%);
+    background: linear-gradient(270deg,#25b137,#0c6846 96%);
     .content{
-        .top-content{
-            display: flex;
-            justify-content: center;
-            // align-items: center;
-            .logo{
-                // border: 1px solid red;
-                background-color: white;
-                background-image: url('../assets/images/logo.png');
-                height: 200px;
-                width: 200px;
-                background-size: contain; 
-                background-position: center; 
-                background-repeat: no-repeat;
-                
-            }
-            .title{
-                // border: 1px solid blue;
-                background-color: white;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 60px;
-                color: #14a800;;
-                font-weight: 600;
-                width: 1200px;
-                
-            }
-        }
-        .mid-content{
-            // border: 1px solid blue;
-            margin-left: 254px;
-            margin-top: 5px;
-            display: flex;
-            gap: 3px;
-            // justify-content: center;
-            width: 1403px;
-            .mid-content-item{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #14a800;
-                color: white;
-                font-weight: 600;
-                font-size: 20px;
-                height: 40px;
-                cursor: pointer;
-                &:hover{
-                    background-color: darkgreen;
-                }
-                
-            }
-            .compare{
-                width: 120px;
-                &.active{
-                    background-color: darkgreen;
-                }
-            }
-            .dgts{
-                width: 190px;
-                &.active{
-                    background-color: darkgreen;
-                }
-            }
-            .partner{
-                width: 170px;
-                &.active{
-                    background-color: darkgreen;
-                }
-            }
-            .choosing-annoucement{
-                width: 355px;
-            }
-            .database{
-                width: 150px;
-            }
-            .news{
-                width: 120px;
-            }
-            .blank-menu{
-                width: 912px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #14a800;
-                color: white;
-                font-weight: 600;
-                font-size: 20px;
-                height: 40px;
-                .login-btn{
-                    margin-left: 700px;
-                    background-color: red;
-                    color: white;
-                    border-radius: 12px;
-                    height: 30px;
-                    width: 90px;
-                    font-weight: 600;
-                    border: none;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: firebrick;
-                    }
-                }
-                .logout-btn{
-                    margin-left: 700px;
-                    background-color: red;
-                    color: white;
-                    border-radius: 12px;
-                    height: 30px;
-                    width: 90px;
-                    font-weight: 600;
-                    border: none;
-                    cursor: pointer;
-                    &:hover{
-                        background-color: firebrick;
-                    }
-                }
-            }
-        }
-        .bottom-content-homepage{
-            // margin-left: 254px;
-            margin-top: 5px;
-            background-image: url(../assets/images/Vna_bg.jpg);
-            height: 700px;
-            width: 100%;
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat;
-            .vna-top-content{
-                // display: flex;
-                justify-content: center;
-                .vna-blank-top{
-                    height: 25px;
-                }
-                .nav-bar{
-                    background-color: #fff6;
-                    display: flex;
-                    width: 1770px;
-                    // margin-top: 20px;
-                    backdrop-filter: blur(8px);
-                    border-radius: 16px;
-                    justify-self: center;
-                    .vna-logo{
-                        background-image: url(../assets/images/logo_no_bg.png);
-                        background-size: contain; 
-                        background-position: center; 
-                        background-repeat: no-repeat;
-                        width: 140px;
-                        height: 70px;
-                        margin-left: 10px;
-                        // border: 1px solid red;
-                        cursor: pointer;
-                    }
-                    .vna-menu{
-                        // border: 1px solid blue;
-                        display: flex;
-                        gap: 50px;
-                        align-items: center;
-                        margin-left: 300px;
-                        .menu-item-homepage{
-                            // border: 1px solid red;
-                            cursor: pointer;
-                            color: white;
-                            font-weight: 600;
-                            font-size: 18px;
-                            height: 48px;
-                            width: 125px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            
-                            &:hover{
-                                color: #25b137;
-                                transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                            }
-                            &.active{
-                                background-color: #0a0a0b52;
-                                border-radius: 8px;
-                            }
-                        }
-                        .menu-item-news{
-                            // border: 1px solid red;
-                            cursor: pointer;
-                            color: white;
-                            font-weight: 600;
-                            font-size: 18px;
-                            height: 48px;
-                            width: 205px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            
-                            &:hover{
-                                color: #25b137;
-                                transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                            }
-                        }
-                        .menu-item-about-us{
-                            // border: 1px solid red;
-                            cursor: pointer;
-                            color: white;
-                            font-weight: 600;
-                            font-size: 18px;
-                            height: 48px;
-                            width: 135px;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            
-                            &:hover{
-                                color: #25b137;
-                                transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                            }
-                        }
-                    }
-                    .vna-btn{
-                        // border: 1px solid green;
-                        display: flex;
-                        gap: 20px;
-                        align-items: center;
-                        margin-left: 290px;
-                        .signup-btn{
-                            cursor: pointer;
-                            height: 48px;
-                            width: 100px;
-                            border-radius: 12px;
-                            font-weight: bold;
-                            border: none;
-                            &:hover{
-                                color: white;
-                                background-color: #51e673;
-                                transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                            }
-                        }
-                        .login-btn{
-                            cursor: pointer;
-                            height: 48px;
-                            width: 100px;
-                            border-radius: 12px;
-                            background-color: #14a800;
-                            color: white;
-                            font-weight: bold;
-                            border: none;
-                            &:hover{
-                                background-color: #51e673;
-                                transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                            }
-                        }
-                    }
-                    .signed-in{
-                        display: flex;
-                        // border: 1px solid red;
-                        align-items: center;
-                        gap: 10px;
-                        margin-left: 350px;
-                        .user-name{
-                            color: white;
-                            font-weight: 600;
-                            cursor: pointer;
-                            &:hover{
-                                color: #14a800;
-                            }
-                        }
-                        .logout-btn{
-                            cursor: pointer;
-                            background-color: transparent;
-                            margin-top: 5px;
-                            border: none;
-                            .logout-icon{
-                                background-color: transparent;
-                                font-size: 16px;
-                                &:hover{
-                                    color: #14a800;
-                                }
-                            }
-                        }
-                    }
-                }
-                .vna-find-property-title{
-                    // border: 1px solid red;
-                    color: white;
-                    font-weight: bold;
-                    display: flex;
-                    justify-content: center;
-                    font-size: 50px;
-                    margin-top: 100px;
-                }
-                .vna-find-property-sub-title{
-                    // border: 1px solid red;
-                    color: white;
-                    display: flex;
-                    justify-content: center;
-                    font-size: 20px;
-                }
-                .vna-homepage-search-container{
-                    display: flex;
-                    justify-content: center;
-                    
-                    .vna-homepage-search-content{
-                        height: 180px;
-                        width: 650px;
-                        background-color: white;
-                        border-radius: 20px;
-                        margin-top: 45px;
-                        .vna-property-type{
-                            display: flex;
-                            justify-content: center;
-                            margin-top: 12px;
-                            .type-item{
-                                
-                                width: 100%;
-                                height: 40px;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                margin-top: 10px;
-                                font-weight: 600;
-                                color: #637d92;
-                                gap: 10px;
-                                cursor: pointer;
-                                &:hover{
-                                    color: #109922;
-                                    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng mượt */
-                                }
-                                &.active{
-                                    border-bottom: 2px solid #109922;
-                                }
-                                .compare-icon{
-                                    margin-top: 3px;
-                                }
-                            }
-                        }
-                        .vna-search-input-container{
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            border: 1px solid #dae1e7;
-                            margin-top: 30px;
-                            width: 595px;
-                            justify-self: center;
-                            border-radius: 99px;
-                            justify-content: flex-start;
-                            .vna-search-input{
-                                height: 56px;
-                                border-radius: 99px;
-                                border: none;
-                                // border: 1px solid blue;
-                                padding-left: 25px;
-                                width: 512px;
-                            }
-                            .search-icon-container{
-                                // border: 1px solid green;
-                                border-radius: 50%;
-                                height: 50px;
-                                width: 50px;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                color: white;
-                                background-color:#14a800;
-                                cursor: pointer;
-                                .search-icon{
-                                    border-radius: 50%;
-                                    
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .auctionAnnoucement-html{
+        
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        .auction-direct{
             // border: 1px solid red;
-            height: fit-content;
-            width: fit-content;
-        }
-        .compare-top-content{
-            margin-top: 20px;
-            // border: 1px solid blue;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            gap: 20px;
-            input{
-                width: 300px;
-            }
-        }
-        .file-content{
-            // border: 1px solid orange;
-            overflow: hidden; /* Ẩn văn bản thừa */
-            // background-color: #f4f5f5;
-        }
-        .compare-bottom-content{
-            // border: 1px solid green;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            .handle-compare-btn{
-                margin-top: 20px;
-                width: 170px;
-                height: 40px;
-                background-color: #14a800;
-                color: white;
+            background: linear-gradient(270deg,#25b137,#0c6846 96%);
+            color: white;
+            height: 100vh;
+            // background-image: url(../assets/images/Vna_bg.jpg);
+            // color: white;
+            // background-size: cover; 
+            // background-position: center; 
+            // background-repeat: no-repeat;
+            .company-title{
                 font-weight: 600;
-                cursor: pointer;
-                &:hover{
-                    background-color: darkgreen;
-                }
+                font-size: 70px;
+                // margin-top: 20px;
+                margin-bottom: 60px;
             }
-        }
-        .compare-content{
-            // background-color: #f4f5f5;
-            .compare-item{
+            .auction-direct-top{
+                // border: 1px solid blue;
+                // margin-top: 20px;
                 display: flex;
-                gap: 30px;
-                .compare-item-title{
-                    font-weight: 600;
-                    // border: 1px solid purple;
-                    width: 360px;
-                    color: red;
-                    &.correct{
-                        color: green;
+                align-items: center;
+                gap: 20px;
+                .property-name-container{
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    .property-name{
+                        font-size: 30px;
+                    }
+                    .property-name-input-container{
+                        border: 1px solid orange;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 280px;
+                        width: 1000px;
+                        .property-name-input{
+                            background-color: white;
+                            min-height: 100%;
+                            min-width: 100%;
+
+                            
+                            text-align: center;
+                            
+                            font-size: 30px;
+                        }
+                    }
+                }
+                .property-name-info-container{
+                    .sub-property-title{
+                        font-size: 30px;
+                    }
+                    .sub-property-info-input{
+                        height: 50px;
+                        width: 600px;
+                        border: 1px solid black;
+                        background-color: white;
                     }
                 }
             }
-            .web-content{
-                width: 400px;
+            .Lock-info-container{
+                margin-top: 15px;
+                display: flex;
+                justify-content: center;
+                .Lock-info{
+                    width: 300px;
+                    height: 30px;
+                    border-radius: 14px;
+                    // background: linear-gradient(270deg,#25b137,#0c6846 96%);
+                    background-color: white;
+                    color: black;
+                    cursor: pointer;
+                    border: none;
+                    &:hover{
+                        background-color: #14a800;
+                        color: white;
+                    }
+                }
             }
-        }   
+            .auction-direct-mid{
+                margin-top: 10px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                .sub-property-title{
+                    font-size: 30px;
+                }
+                .number-of-step{
+                    margin-top: 10px;
+                    margin-left: 88px;
+                    height: 40px;
+                    width: 370px;
+                }
+                .number-of-step-input{
+                    
+                    background-color: white;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 14px;
+                    height: 45px;
+                    margin-top: 25px;
+                    width: 130px;
+                    &:hover{
+                        background-color: #14a800;
+                        color: white;
+                    }
+                }
+            }
+            .auction-direct-bottom{
+                margin-top: 10px;
+                .sub-property-title{
+                    font-size: 30px;
+                }
+                .current-highest-price{
+                    border: 1px solid green;
+                    background-color: white;
+                    color: black;
+                    margin-top: 10px;
+                    margin-left: 88px;
+                    height: 170px;
+                    width: 1640px;
+                    text-align: center;
+                    font-size: 100px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+
+
+
+
     }
 }

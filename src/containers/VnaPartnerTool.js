@@ -25,6 +25,7 @@ class VnaPartnerTool extends Component {
             rulesContent:"",
             rules_num:"",
             secretary:'',
+            auctioneer:'',
 
 
             owner:'',
@@ -191,6 +192,7 @@ class VnaPartnerTool extends Component {
                 onePersonAllowed:this.state.onePersonAllowed,
                 rulesContent:this.state.rulesContent,
                 rules_num:this.state.rules_num,
+                auctioneer: this.state.auctioneer,
 
                 type:'VnaPartner',
                 status:this.state.status,
@@ -573,7 +575,7 @@ class VnaPartnerTool extends Component {
     
     render() {
         
-        // console.log('states: ',this.state)
+        console.log('VnaPartnerTool states: ',this.state)
         
         return (
             <div className='container'>
@@ -582,7 +584,13 @@ class VnaPartnerTool extends Component {
                         <div className='secretary-container'>
                             <label>Tên thư ký: </label>
                             <input className='secretary-name' type="text" onChange={(event)=>this.handleOnChangeInput(event,'secretary')} />
+                            
                         </div>
+                        <div className='auctioneer-container'>
+                            <label>Đấu giá viên: </label>
+                            <input className='auctioneer-name' type="text" onChange={(event)=>this.handleOnChangeInput(event,'auctioneer')} />
+                        </div>
+                        
                         <div>
                             <label>Đấu giá 1 người: </label>
                             <select className='form-control'
