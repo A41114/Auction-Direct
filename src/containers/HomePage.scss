@@ -1,22 +1,18 @@
 .container{
-    // background: #f4f5f5;
-    // height: 100vh;
-    // background-color: #adb5bd93;
-    // color: linear-gradient(270deg,#25b137,#0c6846 96%);
     background: linear-gradient(270deg,#25b137,#0c6846 96%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
     .content{
         
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         .auction-direct{
-            // border: 1px solid red;
-            // background: linear-gradient(270deg,#25b137,#0c6846 96%);
+          
             color: white;
             height: 100vh;
-            // background-image: url(../assets/images/Vna_bg.jpg);
-            // color: white;
-            // background-size: cover; 
-            // background-position: center; 
-            // background-repeat: no-repeat;
+            
+            
             .company-title-container{
                 display: flex;
                 justify-content: center;
@@ -29,11 +25,12 @@
             }
             .auction-direct-top{
                 // border: 1px solid blue;
-                // margin-top: 20px;
+                // margin-top: 20px;    
                 display: flex;
                 align-items: center;
                 gap: 20px;
                 .property-name-container{
+                    // border: 1px solid red;
                     display: flex;
                     align-items: center;
                     gap: 10px;
@@ -45,9 +42,9 @@
                         // display: flex;
                         justify-content: center;
                         align-items: center;
-                        height: 350px;
+                        // height: 350px;
                         width: 1000px;
-                        margin-left: 150px;
+                        // margin-left: 150px;
                         .short-name{
                             height: 100px;
                             width: 100px;
@@ -88,6 +85,7 @@
                 margin-top: 15px;
                 display: flex;
                 justify-content: center;
+                gap: 10px;
                 .Lock-info{
                     width: 300px;
                     height: 30px;
@@ -102,18 +100,34 @@
                         color: white;
                     }
                 }
+                .file-export-btn{
+                    width: 300px;
+                    height: 30px;
+                    border-radius: 14px;
+                    background-color: white;
+                    color: black;
+                    cursor: pointer;
+                    border: none;
+                    &:hover{
+                        background-color: orange;
+                        color: white;
+                    }
+                }
             }
             .auction-direct-mid{
-                margin-top: 10px;
+                margin-top: 40px;
                 display: flex;
                 align-items: center;
                 gap: 20px;
+                // border: 1px solid red;
+                // justify-content: center;
                 .sub-property-title{
                     font-size: 30px;
+                    // margin-left: 150px;
                 }
                 .number-of-step{
                     margin-top: 10px;
-                    margin-left: 150px;
+                    // margin-left: 150px;
                     height: 40px;
                     width: 370px;
                     font-weight: bold;
@@ -150,16 +164,18 @@
                 }
             }
             .auction-direct-bottom{
-                margin-top: 10px;
+                margin-top: 40px;
+                padding-bottom: 40px;
                 .sub-property-title{
                     font-size: 30px;
+                    // margin-left: 150px;
                 }
                 .current-highest-price{
                     border: 1px solid green;
                     background-color: white;
                     color: black;
                     margin-top: 10px;
-                    margin-left: 150px;
+                    // margin-left: 150px;
                     height: 170px;
                     width: 1640px;
                     text-align: center;
