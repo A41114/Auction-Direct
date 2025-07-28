@@ -123,8 +123,9 @@ class HomePage extends Component {
                 numberOfStep:'',
                 participant:''
             })
+            toast.success('Cập nhật giá hiện tại thành công !')
         }
-        toast.success('Cập nhật giá hiện tại thành công !')
+        
     }
     formatNumber = (num)=>{
         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
