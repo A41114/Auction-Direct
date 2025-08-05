@@ -25,9 +25,18 @@ import { withRouter } from '../withRouter'
 import { current } from '@reduxjs/toolkit';
 
 import { toast,ToastContainer } from 'react-toastify';
+import ExcelJS from 'exceljs';
+import { saveAs } from 'file-saver';
 let stt=1;
 let csvRows = [];
 let getDetailCount=0
+let headers = [
+    { label: 'STT', key: 'stt' },
+    { label: 'Mã số khách hàng', key: 'code' },
+    { label: 'Số bước giá trả', key: 'numberOfStep' },
+    { label: 'Đơn giá trả (đồng/m²)', key: 'price' },
+    { label: 'Tổng giá trả (đồng)', key: 'totalPrice' }
+  ];
 class HomePage extends Component {
     
     constructor(props) {
@@ -199,35 +208,39 @@ class HomePage extends Component {
         
             let dataExport=[]
             //Giá khởi điểm
-            dataExport.push({'STT':0,'Khách hàng':'Giá khởi điểm','Số bước giá':0+`'`,'Giá trả':this.state.startingPrice+`'`, 'Tổng giá trả':parseFloat(this.state.startingPrice)*this.state.area+`'`
-            })
+            // dataExport.push({'STT':0,'Khách hàng':'Giá khởi điểm','Số bước giá':0+`'`,'Giá trả':this.state.startingPrice+`'`, 'Tổng giá trả':parseFloat(this.state.startingPrice)*this.state.area+`'`
+            // })
             
             //lịch sử trả giá
             await data.map((item,index)=>{
                 // console.log('item: ',item)
-                dataExport.push({'STT':stt,'Khách hàng':this.state.participantHistory[index],'Số bước giá':this.state.numberOfStepHistory[index]+`'`,'Giá trả':item+`'`, 'Tổng giá trả':parseFloat(item)*this.state.area+`'`
+                dataExport.push({'stt':stt,'code':this.state.participantHistory[index],'numberOfStep':this.state.numberOfStepHistory[index],'price':item.toLocaleString(), 'totalPrice':(parseFloat(item)*this.state.area).toLocaleString()
                 })
                 stt++
                 
             })
+            // console.log('data xuất: ',dataExport)
+            this.exportDataToExcel(dataExport, headers)
             
+
+            ////////////////////////////////////////////CSV
             // console.log('ex: ',dataExport)
-            if (!dataExport || !dataExport.length)return;
-            if(csvRows.length<1){
-                // Lấy tiêu đề cột
-                const headers = Object.keys(dataExport[0]);
-                csvRows.push(headers.join(","));
+            // if (!dataExport || !dataExport.length)return;
+            // if(csvRows.length<1){
+            //     // Lấy tiêu đề cột
+            //     const headers = Object.keys(dataExport[0]);
+            //     csvRows.push(headers.join(","));
 
-            }
-            const headers = Object.keys(dataExport[0]);
-            // Thêm dữ liệu từng dòng
-            for (const row of dataExport) {
-            const values = headers.map(header => `"${row[header]}"`);
-            csvRows.push(values.join(","));
-            }
-            // toast.success("Thêm dữ liệu thành công!");
+            // }
+            // const headers = Object.keys(dataExport[0]);
+            // // Thêm dữ liệu từng dòng
+            // for (const row of dataExport) {
+            // const values = headers.map(header => `"${row[header]}"`);
+            // csvRows.push(values.join(","));
+            // }
+            // // toast.success("Thêm dữ liệu thành công!");
 
-            this.exportArrayToCSV()
+            // this.exportArrayToCSV()
         
         
 
@@ -246,6 +259,50 @@ class HomePage extends Component {
         csvRows=[]
         stt=1
     }
+    exportDataToExcel = async (data, headers, fileName = 'lich_su_tra_gia.xlsx') => {
+        const workbook = new ExcelJS.Workbook();
+        const worksheet = workbook.addWorksheet('Sheet1');
+      
+        // Set cột: header + key + độ rộng tạm thời
+        worksheet.columns = headers.map(header => ({
+          header: header.label,
+          key: header.key,
+          width: header.width || header.label.length + 5, // width mặc định
+        }));
+      
+        // Thêm dữ liệu
+        data.forEach((row) => {
+          worksheet.addRow(row);
+        });
+      
+        // Căn giữa toàn bộ ô
+        worksheet.eachRow((row) => {
+          row.eachCell((cell) => {
+            cell.alignment = { vertical: 'middle', horizontal: 'center' };
+          });
+        });
+        
+      
+        // Tự động set chiều rộng dựa trên nội dung dài nhất trong cột
+        worksheet.columns.forEach((column) => {
+          let maxLength = 10;
+          column.eachCell?.({ includeEmpty: true }, (cell) => {
+            const value = cell.value ? cell.value.toString() : '';
+            maxLength = Math.max(maxLength, value.length + 2);
+          });
+          column.width = maxLength;
+        });
+        worksheet.getRow(1).eachCell((cell) => {
+            cell.font = { bold: true };
+        });
+      
+        // Ghi file
+        const buffer = await workbook.xlsx.writeBuffer();
+        const blob = new Blob([buffer], {
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        });
+        saveAs(blob, fileName);
+      };
     
     render() {
         // console.log('HOMEPAGE')
